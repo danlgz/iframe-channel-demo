@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Child</title>
+</head>
+<body>
+  <h1>child</h1>
+  <div id="events">
+    <h3>Events:</h3>
+  </div>
+  <script>
+    const bc = new BroadcastChannel('demo');
+    bc.addEventListener('message', event => {
+      console.log(event.data)
+      const p = document.createElement('p');
+      p.innerHTML = event.data.message
+      document.querySelector('#events').appendChild(p);
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iframe chanel</title>
+</head>
+<body>
+  <h1>parent</h1>
+  <button>
+    Send message to child
+  </button>
+
+  <br />
+  <br />
+
+  <iframe src="./child.html" style="height: 80vh; border: 3px solid rebeccapurple;"></iframe>
+
+  <script>
+    const bc = new BroadcastChannel('demo');
+    
+    document.querySelector('button').addEventListener('click', () => {
+      bc.postMessage({
+        type: 'add_message',
+        message: `hello from parent at ${new Date()}`
+      })
+    });
+  </script>
+</body>
+</html>
